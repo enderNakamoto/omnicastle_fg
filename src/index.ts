@@ -1,66 +1,28 @@
 import { ethers } from 'ethers';
 
-const BASE_URL = 'https://api.openweathermap.org/';
-const LOCATION = 'Tokyo';
-const API_KEY = 'OPENWEATHERMAP_API_KEY_HERE';
-const WEATHERMAN_PK = 'WEATHERMAN_PRIVATE_KEY_HERE';
+const BASE_URL = 'https://pro-api.coinmarketcap.com/v3/fear-and-greed/latest?CMC_PRO_API_KEY';
+const API_KEY = 'b9a2b531-14a0-407f-8972-c726f4aba0b6';
+const ORACLE_PK = 'ORACLE_PRIVATE_KEY_HERE';
 // Contract Addresses
 const AIRDAO_CONTRACT_ADDRESS = '0xDF644855754F1C2E0D78BB647E6c1ECB12b7B126';
 const FHENIX_CONTRACT_ADDRESS = 'Fhenix castle address here';
+const ROOTSTOCK_CASTLE_ADDRESS = 'Rootstock castle address here';
 // RPC URL for AirDao Testnet
 const RPC_URL_AIRDAO_TESTNET = 'https://network.ambrosus-test.io';
 const RPC_URL_FHENIX_TESTNET = 'https://api.helium.fhenix.zone'; 
+const RPC_URL_ROOTSTOCK_TESTNET = 'https://public-node.testnet.rsk.co';
 
-// Updated enum to match Solidity contract
-enum Weather {
-  CLEAR,
-  CLOUDS,
-  SNOW,
-  RAIN,
-  DRIZZLE,
-  THUNDERSTORM
-}
 
-declare const _STD_: any;
-
-if (typeof _STD_ === "undefined") {
-  console.log("Running in local environment");
-  (global as any)._STD_ = {
-    app_info: { version: "local" },
-    job: { getId: () => "local" },
-    device: { getAddress: () => "local" },
-  };
-}
-
-async function getWeatherData() {
-  const response = await fetch(`${BASE_URL}data/2.5/weather?q=${LOCATION}&appid=${API_KEY}`);
+async function getFearGreedIndex() {
+  const response = await fetch(`${BASE_URL}=${API_KEY}`);
   const data = await response.json();
-  const condition = data["weather"][0]["main"];
-  console.log(`Weather condition in ${LOCATION}: ${condition}`);
-  return condition;
+  const index = data["data"]["value"];
+  console.log(`Fear Freen Index is: ${index}`);
+  return index;
 }
 
-function weatherConditionToEnum(condition: string): Weather {
-  switch (condition.toUpperCase()) {
-    case 'CLEAR':
-      return Weather.CLEAR;
-    case 'CLOUDS':
-      return Weather.CLOUDS;
-    case 'SNOW':
-      return Weather.SNOW;
-    case 'RAIN':
-      return Weather.RAIN;
-    case 'DRIZZLE':
-      return Weather.DRIZZLE;
-    case 'THUNDERSTORM':
-      return Weather.THUNDERSTORM;
-    default:
-      console.warn(`Unknown weather condition: ${condition}. Defaulting to CLEAR.`);
-      return Weather.CLEAR;
-  }
-}
 
-async function callWeatherChange(weatherCondition: Weather) {
+async function callIndexChange(index: number) {
   // Connect to the Ethereum network (replace with your preferred provider URL)
   const provider = new ethers.JsonRpcProvider(RPC_URL_AIRDAO_TESTNET);
 
