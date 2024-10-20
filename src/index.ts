@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 
 const BASE_URL = 'https://pro-api.coinmarketcap.com/v3/fear-and-greed/latest?CMC_PRO_API_KEY';
-const API_KEY = 'b9a2b531-14a0-407f-8972-c726f4aba0b6';
+const API_KEY = 'coinmarketcap_api_key_here';
 const ORACLE_PK = 'ORACLE_PRIVATE_KEY_HERE';
 // Contract Addresses
 const AIRDAO_CONTRACT_ADDRESS = '0xDF644855754F1C2E0D78BB647E6c1ECB12b7B126';
@@ -27,7 +27,7 @@ async function callIndexChange(index: number) {
   const provider = new ethers.JsonRpcProvider(RPC_URL_AIRDAO_TESTNET);
 
   // Create a wallet instance
-  const wallet = new ethers.Wallet(WEATHERMAN_PK, provider);
+  const wallet = new ethers.Wallet(ORACLE_PK, provider);
 
   // Create a contract instance
   const contractABI = [
