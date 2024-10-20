@@ -5,7 +5,7 @@ const LOCATION = 'Tokyo';
 const API_KEY = 'OPENWEATHERMAP_API_KEY_HERE';
 const WEATHERMAN_PK = 'WEATHERMAN_PRIVATE_KEY_HERE';
 // Contract Addresses
-const AIRDAO_CONTRACT_ADDRESS = '0xDF644855754F1C2E0D78BB647E6c1ECB12b7B126';
+const CONTRACT_ADDRESS = '0xDF644855754F1C2E0D78BB647E6c1ECB12b7B126';
 // RPC URL for AirDao Testnet
 const RPC_URL_AIRDAO_TESTNET = 'https://network.ambrosus-test.io';
 
@@ -70,7 +70,7 @@ async function callWeatherChange(weatherCondition: Weather) {
     "function setWeather(uint8 newWeather) external",
     "event WeatherChanged(uint8 newWeather)"
   ];
-  const contract = new ethers.Contract(AIRDAO_CONTRACT_ADDRESS, contractABI, wallet);
+  const contract = new ethers.Contract(CONTRACT_ADDRESS, contractABI, wallet);
 
   console.log("Calling setWeather function...");
   try {
