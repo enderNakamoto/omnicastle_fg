@@ -1,10 +1,8 @@
-# Acurast App that acts as Weather Oracle for Omnicastles
+# Acurast App that acts as Fear Freed Oracle for Omnicastles
 
-For our proof of concept, we deployed nodejs script on a Acurast processor that fetches weather data from [openweathermap api](https://openweathermap.org/current). Assuming that the data from Openweather API is correct, the data is forwarded to the game smart contract without additional trust overhead. It is signed by a preassigned weatherman, verifying that the incoming data comes from the acurast processor. 
-
-The acurast data sets the weather condition to one of the following options, based on the [weather condition codes of the api](https://openweathermap.org/weather-conditions)
-
-Each weather condition affects the effectiveness of the units, adding a layer of strategy to the game. 
+It Calls the Coinmarket cap Frear greed Index API endpoint, and gets a data that looks like this: 
+![alt text](image.png)
+it forwards that data to smart contracts
 
 ## App Runtime Environment
 
