@@ -14,7 +14,7 @@ It's important to ensure that any app deployed to the processors is compatible w
 
 ## Overview
 
-The project is a simple [TypeScript](https://www.typescriptlang.org/) app that depends on the [aptos-ts-sdk](https://github.com/aptos-labs/aptos-ts-sdk) library. It uses [webpack](https://webpack.js.org/) to transpile TypeScript to JavaScript and bundle the code with its dependencies so that it can be deployed on Acurast processors.
+The project is a simple [TypeScript](https://www.typescriptlang.org/) app that depends on the `ethers-js` library. It uses [webpack](https://webpack.js.org/) to transpile TypeScript to JavaScript and bundle the code with its dependencies so that it can be deployed on Acurast processors.
 
 #### Files
 - `src/index.ts`: main file
